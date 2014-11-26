@@ -12,6 +12,8 @@
 class User < ActiveRecord::Base
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
+  scope :ranked, -> { order('win_count / loss_count DESC') }
+  scope :leaders, -> { ranked.limit(10) }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   
@@ -22,6 +24,6 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }  
 
   def matches
-    @matches ||= Match.where('winner_id = ? OR loser_id = ?', id, id)
+    @matches ||= Match.played_by(id)
   end
 end

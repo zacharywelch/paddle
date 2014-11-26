@@ -1,4 +1,8 @@
 Paddle::Application.routes.draw do
+  get "rankings/index"
+  resources :rankings, only: [:index]
+  root 'rankings#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

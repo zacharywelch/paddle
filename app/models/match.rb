@@ -10,6 +10,7 @@
 #
 
 class Match < ActiveRecord::Base
-  belongs_to :winner, class_name: 'User'
-  belongs_to :loser, class_name: 'User'
+  belongs_to :winner, class_name: 'User', counter_cache: 'win_count'
+  belongs_to :loser, class_name: 'User', counter_cache: 'loss_count'
+  scope :played_by, ->(player_id) { where("winner_id = ? OR loser_id = ?", player_id, player_id) }
 end
