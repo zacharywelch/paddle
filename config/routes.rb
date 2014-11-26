@@ -1,5 +1,4 @@
 Paddle::Application.routes.draw do
-  get "rankings/index"
   resources :rankings, only: [:index]
   root 'rankings#index'
 

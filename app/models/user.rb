@@ -12,7 +12,7 @@
 class User < ActiveRecord::Base
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
-  scope :ranked, -> { order('win_count / loss_count DESC') }
+  scope :ranked, -> { order('win_count / (win_count + loss_count) DESC') }
   scope :leaders, -> { ranked.limit(10) }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   
   before_save { self.email = email.downcase }  
+
+  def win_percentage
+    win_count.to_f / (win_count + loss_count)
+  end
 
   def matches
     @matches ||= Match.played_by(id)
