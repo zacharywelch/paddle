@@ -10,7 +10,15 @@
 #
 
 class Match < ActiveRecord::Base
-  belongs_to :winner, class_name: 'User', counter_cache: 'win_count'
-  belongs_to :loser, class_name: 'User', counter_cache: 'loss_count'
+  belongs_to :winner, class_name: 'User'
+  belongs_to :loser, class_name: 'User'
   scope :played_by, ->(player_id) { where("winner_id = ? OR loser_id = ?", player_id, player_id) }
+  after_create :calculate_statistics
+
+  private
+
+  def calculate_statistics
+    winner.increment_wins
+    loser.increment_losses
+  end
 end

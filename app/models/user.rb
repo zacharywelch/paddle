@@ -22,12 +22,27 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   
   before_save { self.email = email.downcase }  
-
-  def win_percentage
-    win_count.to_f / (win_count + loss_count)
-  end
+  before_save :calculate_statistics, :if => :win_loss_changed?
 
   def matches
     @matches ||= Match.played_by(id)
   end
+
+  def increment_wins
+    update_attributes(win_count: win_count + 1)
+  end
+
+  def increment_losses
+    update_attributes(loss_count: loss_count + 1)
+  end
+
+  def win_loss_changed?
+    win_count_changed? || loss_count_changed?
+  end
+  
+  private
+
+  def calculate_statistics
+    win_percentage = win_count.to_f / (win_count + loss_count)
+  end  
 end
