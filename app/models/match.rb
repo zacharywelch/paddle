@@ -7,7 +7,7 @@
 #  loser_id   :integer
 #  created_at :datetime
 #  updated_at :datetime
-#
+
 
 class Match < ActiveRecord::Base
   belongs_to :winner, class_name: 'User'
