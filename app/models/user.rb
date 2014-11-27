@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   end
 
   def lose!(other_user)
-    losses.create!(other_user)
+    losses.create!(winner: other_user)
   end
 
   private
