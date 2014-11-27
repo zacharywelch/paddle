@@ -12,7 +12,7 @@
 class User < ActiveRecord::Base
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
-  scope :ranked, -> { order('win_count / (win_count + loss_count) DESC') }
+  scope :ranked, -> { order(win_percentage: :desc) }
   scope :leaders, -> { ranked.limit(10) }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
@@ -43,6 +43,6 @@ class User < ActiveRecord::Base
   private
 
   def calculate_statistics
-    win_percentage = win_count.to_f / (win_count + loss_count)
+    self.win_percentage = win_count.to_f / (win_count + loss_count)
   end  
 end

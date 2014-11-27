@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141126211032) do
+ActiveRecord::Schema.define(version: 20141127021724) do
 
   create_table "matches", force: true do |t|
     t.integer  "winner_id"
@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20141126211032) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "win_count",  default: 0
-    t.integer  "loss_count", default: 0
+    t.integer  "win_count",      default: 0
+    t.integer  "loss_count",     default: 0
+    t.float    "win_percentage"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
