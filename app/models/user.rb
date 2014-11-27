@@ -39,7 +39,15 @@ class User < ActiveRecord::Base
   def win_loss_changed?
     win_count_changed? || loss_count_changed?
   end
-  
+
+  def win!(other_user)
+    wins.create!(loser: other_user)
+  end
+
+  def lose!(other_user)
+    losses.create!(other_user)
+  end
+
   private
 
   def calculate_statistics
