@@ -13,11 +13,11 @@ class Match < ActiveRecord::Base
   belongs_to :winner, class_name: 'User'
   belongs_to :loser, class_name: 'User'
   scope :played_by, ->(player_id) { where("winner_id = ? OR loser_id = ?", player_id, player_id) }
-  after_create :calculate_statistics
+  after_create :post_wins_losses
 
   private
 
-  def calculate_statistics
+  def post_wins_losses
     winner.increment_wins
     loser.increment_losses
   end

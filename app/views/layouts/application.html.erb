@@ -14,7 +14,7 @@
 <body class='fill-light'>
   <%= render 'layouts/header' %>
   <div id='wrap' class='container-fluid contain pad4y'>
-    <div class='box round fill-white'>
+    <div class='box round fill-white prose'>
       <% flash.each do |type, msg| %>
         <%= alert_tag(type, msg) %>
       <% end %>    
