@@ -1,7 +1,12 @@
+/*.logo { font-family: 'Open Sans Bold'; font-size: 22px; }*/
+body.players .box { padding-left: 100px; }
 @media (max-width:767px) {
   body.fill-light { background: #fff; }
   .container-fluid > .pad4y { padding-top: 20px; padding-bottom: 20px; }
   .box { border-radius: 0; margin-bottom: 0; }
   .box:not(:first-child) { border-top: none; } 
   .box.form { padding: 0; border: none; }
+  body.players > .container-fluid { padding: 0; }
+  body.players .pad4y { padding-top: 5px; }
+  body.players .box:first-child { border-top: none; }  
 }
