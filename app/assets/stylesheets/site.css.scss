@@ -1,5 +1,5 @@
-/*.logo { font-family: 'Open Sans Bold'; font-size: 22px; }*/
-body.players .box { padding-left: 100px; }
+body.players .box { padding-left: 80px; }
+body.players .graphic-sm { height: 40px; width: 40px; line-height: 40px; }
 @media (max-width:767px) {
   body.fill-light { background: #fff; }
   .container-fluid > .pad4y { padding-top: 20px; padding-bottom: 20px; }
