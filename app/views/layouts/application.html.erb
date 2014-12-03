@@ -13,7 +13,13 @@
 </head>
 <body class='fill-light players'>
   <%= render 'layouts/header' %>
-  <%= yield %>  
+  <div class='container-fluid clearfix'>
+    <div class='contain clearfix pad4y'>    
+      <div class='col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 clearfix'>
+        <%= yield %>  
+      </div>
+    </div>
+  </div>
   <%= render 'layouts/footer' %>
   <%= javascript_include_tag '/framework/js/cb-design-framework.min' %>
 </body>
