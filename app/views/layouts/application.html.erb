@@ -13,15 +13,131 @@
 </head>
 <body class='fill-light'>
   <%= render 'layouts/header' %>
-  <div id='wrap' class='container-fluid contain pad4y'>
-    <div class='box round fill-white prose'>
-      <% flash.each do |type, msg| %>
-        <%= alert_tag(type, msg) %>
-      <% end %>    
-      <%= yield %>
+  <div class='container-fluid clearfix'>
+    <div class='contain clearfix pad4y'>
+      
+      <div class='box form round pad2 fill-white col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 clearfix'>
+        
+        <form>
+          <h2 class='space-bottom1'>IT Service Request Form</h2>
+          <hr />
+          <fieldset>
+            <label for='employee-name'>
+              Which team would you like to submit a request for?<span class='danger pad0'>*</span>
+            </label>
+            <div class='input-group col-sm-6 col-xs-12'>
+              <select class='stretch'>
+                <option>
+                  Choose a team
+                </option>
+                <option>
+                  Axiom
+                </option>
+                <option>
+                  Customer Care
+                </option>
+                <option>
+                  Information Systems
+                </option>
+                <option>
+                  IT Finance - BI
+                </option>
+                <option>
+                  Nexus
+                </option>
+                <option>
+                  Sales IT Vertical
+                </option>
+                <option>
+                  Source &amp; Screen
+                </option>
+                <option>
+                  SQL
+                </option>
+                <option>
+                  Tableau Reporting
+                </option>
+              </select>
+              <i class='icon icon-chevron-down'></i>
+            </div>          
+          </fieldset>
+          <fieldset>
+            <label>
+              What type of request is this?<span class='danger pad0'>*</span>
+            </label>
+            <div class='radio space-bottom1'>
+              <input type='radio' name='request-type' id='access' value='access'>
+              <label for='access' class='icon-radio-checked'>
+                Access
+              </label>
+            </div>
+            <div class='radio space-bottom1'>
+              <input type='radio' name='request-type' id='change' value='change'>
+              <label for='change' class='icon-radio-checked'>
+                Change
+              </label>
+            </div>
+            <div class='radio space-bottom1'>
+              <input type='radio' name='request-type' id='problem' value='problem'>
+              <label for='problem' class='icon-radio-checked'>
+                Problem
+              </label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <label for='subject'>
+              Subject<span class='danger pad0'>*</span>
+            </label>
+            <input type='text' id='subject' class='stretch'>
+          </fieldset>
+          <fieldset>
+            <label for='description'>Description</label>
+            <textarea id='description' class='stretch row6'></textarea>
+          </fieldset>
+          <fieldset class='hidden-xs'>
+            <label for='attachments'>
+              Attachments
+              <p class='quiet small'>max file size 4MB, each</p>
+            </label>
+            <div class='fileinput fileinput-new' data-provides='fileinput'>
+              <div class='input-group'>
+                <div class='form-control uneditable-input' data-trigger='fileinput'>
+                  <i class='icon icon-paperclip fileinput-exists'></i>
+                  <span class='fileinput-filename'></span>
+                </div>
+                <span class='input-group-btn btn-file'>
+                  <span class='btn btn-default fileinput-new' data-role='select-file'>
+                    Select file
+                  </span>
+                  <span class='btn btn-default fileinput-exists' data-role='change'>
+                    <i class='icon icon-cog pad0r'></i>Change
+                  </span>
+                  <input type='file'>
+                  <a href='#' class='btn btn-danger fileinput-exists' data-dismiss='fileinput'>
+                    <i class='icon icon-trash pad0r'></i>Remove
+                  </a>               
+                </span>             
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class='hidden-xs'>
+            <label for='attachments'>
+              Record a screencast to communicate your issue more effectively.
+            </label>
+            <fieldset>
+              <button class='btn btn-default'>
+                <i class='icon icon-record icon-md pad0r'></i>Record screencast
+              </button>
+            </fieldset>
+          </fieldset>
+          <hr />
+          <!-- <input type='submit' class='btn btn-primary' value='Submit'> -->
+          <a href='index.html' class='btn btn-primary'>Submit</a>
+        </form>
+
+      </div>
     </div>
-  </div>
-  <%= debug(params) if Rails.env.development? %>
+  </div><!-- ./content -->
   <%= render 'layouts/footer' %>
   <%= javascript_include_tag '/framework/js/cb-design-framework.min' %>
 </body>
