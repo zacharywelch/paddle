@@ -3,9 +3,11 @@
   <div class='pin-left pad2'>
     <%= image_tag 'melissa.jpg', class: 'graphic-sm img-circle' %>
   </div>
-  <strong class='inline pull-right quiet pad1y'>2,764</strong>
-  <h4><%= player.name %></h4>    
-  <p class='small quiet'>
-    <%= player.win_count %> wins / <%= player.loss_count %> losses
-  </p>
+  <div class='col-xs-9'>
+    <h4><%= player.name %></h4>    
+    <p class='small quiet'>
+      <%= player.win_count %> wins / <%= player.loss_count %> losses
+    </p>
+  </div>
+  <strong class='pin-right pad2 quiet'>2,764</strong>  
 </div>
