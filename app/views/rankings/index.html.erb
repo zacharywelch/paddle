@@ -1,7 +1,15 @@
-<!-- <header class='fill-denim dark center pad2y'>
-  <h1>Leaders</h1>
-  <p class='quiet'>2014</p>
-</header>
- -->
-
-<%= render partial: 'player', collection: @players %>  
+<% @players.each do |player| %>
+  <div class='box round pad2 clearfix contain fill-white'>
+    <!-- rank = player_counter + 1 -->
+    <div class='pin-left pad2'>
+      <%= image_tag 'melissa.jpg', class: 'graphic-sm img-circle' %>
+    </div>
+    <strong class='inline pull-right quiet pad1y'>2,764</strong>
+    <div class='col-xs-9'>
+      <h4 class='truncate'><%= player.name %></h4>    
+      <p class='small quiet'>
+        <%= player.win_count %> wins / <%= player.loss_count %> losses
+      </p>
+    </div>
+  </div>
+<% end %>
