@@ -11,7 +11,9 @@ a.clickable:focus { box-shadow: none; }
   .box { border-radius: 0; margin-bottom: 0; }
   .box:not(:first-child) { border-top: none; } 
   .box.form { padding: 0; border: none; }
-  body.requests > .container-fluid { padding: 0; }
+  body > .container-fluid { padding: 0; }
   body.requests .pad4y { padding-top: 5px; }
   body.requests .box:first-child { border-top: none; }  
+
+  body.player .pad4y { padding-top: 0; }
 }
