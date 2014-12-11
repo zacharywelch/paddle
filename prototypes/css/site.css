@@ -1,5 +1,5 @@
 /*.logo { font-family: 'Open Sans Bold'; font-size: 22px; }*/
-body.requests .box { padding-left: 100px; }
+body.requests .box { padding-left: 110px; }
 @media (min-width: 992px) and (max-width: 1080px) {
   .primary .tabs { width: 66.66666666666666%; }
 }
