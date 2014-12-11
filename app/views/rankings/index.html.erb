@@ -1,15 +1,17 @@
-<% @players.each do |player| %>
-  <div class='box round pad2 clearfix contain fill-white'>
-    <!-- rank = player_counter + 1 -->
+<% @players.each_with_index do |player, rank| %>
+  <a href='#fakelink' class='clickable block box round pad2 clearfix contain fill-white slideDown'>
     <div class='pin-left pad2'>
-      <%= image_tag 'melissa.jpg', class: 'graphic-sm img-circle' %>
+      <span class='pad2y pad0r quiet small'><%= rank + 1 %></span>
+      <div class='fill-red img-circle graphic-sm dark inline'>
+        <i class='icon icon-user'></i>
+      </div>
     </div>
-    <strong class='inline pull-right quiet pad1y'>2,764</strong>
-    <div class='col-xs-9'>
-      <h4 class='truncate'><%= player.name %></h4>    
-      <p class='small quiet'>
-        <%= player.win_count %> wins / <%= player.loss_count %> losses
-      </p>
+    <h4><%= player.name %></h4>
+    <div class='quiet small'>
+      2,764 points · <%= player.win_count %> wins · <%= player.loss_count %> losses
     </div>
-  </div>
+    <div class='small space-bottom1'>
+      played 2 hours ago
+    </div>
+  </a>
 <% end %>

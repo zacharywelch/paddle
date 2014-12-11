@@ -1,5 +1,9 @@
-body.players .box { padding-left: 80px; }
-body.players .graphic-sm { height: 40px; width: 40px; line-height: 40px; }
+body.players .box { padding-left: 110px; }
+a.clickable { color: inherit; }
+a.clickable:focus { box-shadow: none; }
+@media (min-width: 992px) and (max-width: 1080px) {
+  .primary .tabs { width: 66.66666666666666%; }
+}
 @media (max-width:767px) {
   body.fill-light { background: #fff; }
   .container-fluid > .pad4y { padding-top: 20px; padding-bottom: 20px; }
