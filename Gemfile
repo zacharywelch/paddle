@@ -9,6 +9,10 @@ gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 
+group :development do
+  gem 'annotate', '2.5.0'
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec', '2.14.1'

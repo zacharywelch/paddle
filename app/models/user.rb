@@ -3,13 +3,15 @@
 # Table name: users
 #
 #  id             :integer          not null, primary key
-#  name           :string(255)
 #  email          :string(255)
 #  created_at     :datetime
 #  updated_at     :datetime
 #  win_count      :integer          default(0)
 #  loss_count     :integer          default(0)
 #  win_percentage :float
+#  first_name     :string(255)
+#  last_name      :string(255)
+#  nickname       :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -20,12 +22,17 @@ class User < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   
-  validates :name, presence: true, length: { maximum: 50 }  
+  validates :first_name, presence: true, length: { maximum: 50 }  
+  validates :last_name, presence: true, length: { maximum: 50 }  
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   
   before_save { self.email = email.downcase }  
   before_save :calculate_statistics, :if => :win_loss_changed?
+
+  def full_name
+    [first_name, nickname_in_quotes, last_name].compact.join(' ')
+  end  
 
   def matches
     @matches ||= Match.played_by(id)
@@ -49,6 +56,10 @@ class User < ActiveRecord::Base
 
   def lose!(other_user)
     losses.create!(winner: other_user)
+  end
+
+  def nickname_in_quotes
+    "\"" + nickname + "\"" unless nickname.blank?
   end
 
   private
