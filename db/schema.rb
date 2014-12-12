@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211231014) do
+ActiveRecord::Schema.define(version: 20141212034829) do
 
   create_table "matches", force: true do |t|
     t.integer  "winner_id"
@@ -26,12 +26,13 @@ ActiveRecord::Schema.define(version: 20141211231014) do
     t.datetime "updated_at"
     t.integer  "win_count",       default: 0
     t.integer  "loss_count",      default: 0
-    t.float    "win_percentage"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "nickname"
     t.string   "password_digest"
     t.string   "remember_token"
+    t.integer  "rank"
+    t.integer  "points"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
