@@ -4,7 +4,9 @@
     <%= image_tag 'bill.jpg', alt: @user.full_name, class: 'img-circle space-bottom0', width: 85 %>
     <h2><%= @user.first_name %> <%= @user.last_name %></h2>
     <p class='quiet'><%= @user.nickname %></p>
-    <%= link_to 'Play', new_match_path(user_id: @user.id), class: 'btn btn-loud btn-wide' %>
+    <% unless current_user == @user %>
+      <%= link_to 'Play', new_match_path(user_id: @user.id), class: 'btn btn-loud btn-wide' %>
+    <% end %>
   </section>
 </div>
 <div class='fill-gray pad2 center clearfix quiet'>
