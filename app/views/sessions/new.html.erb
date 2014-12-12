@@ -1,19 +1,18 @@
-<% provide(:title, "Sign in") %>
-<h1>Sign in</h1>
-
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(:session, url: sessions_path) do |f| %>
-
+<% provide(:title, 'Log In') %>
+<div class='contain pad2 prose'>
+  <%= form_for(:session, url: sessions_path, class: 'space-bottom') do |f| %>
+    <fieldset>
       <%= f.label :email %>
-      <%= f.text_field :email %>
-
+      <%= f.text_field :email, class: 'stretch' %>
+    </fieldset>
+    <fieldset>
       <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-    <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
-  </div>
+      <%= f.password_field :password, class: 'stretch' %>
+    </fieldset>
+    <%= f.submit 'Log In', class: 'btn btn-block btn-primary' %>
+  <% end %>
+  <hr />
+  <p class='quiet center'>
+    Don't have an account? <%= link_to 'Sign up', signup_path %>
+  </p>
 </div>

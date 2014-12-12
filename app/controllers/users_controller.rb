@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params.merge(password_confirmation: user_params[:password]))
     @user.points = 1450
     if @user.save
       sign_in @user

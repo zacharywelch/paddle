@@ -6,11 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(first_name: 'Wun', last_name: 'Yin', nickname: 'The Master', email: "wun@gmail.com")
-User.create!(first_name: 'Jhonny', last_name: 'Yin', nickname: 'Mr Big Shot', email: "jhonny@gmail.com")
-User.create!(first_name: 'David', last_name: 'Yin', nickname: 'Drunken Paddler', email: "david@gmail.com")
-User.create!(first_name: 'Art', last_name: 'Rivkin', nickname: 'Angry Russian', email: "art@gmail.com")
-User.create!(first_name: 'Abdul', last_name: 'Khader', nickname: 'Money', email: "abdul@gmail.com")
+User.create!(first_name: 'Wun', last_name: 'Yin', nickname: 'The Master', email: "wun@gmail.com", password: "password", password_confirmation: "password")
+User.create!(first_name: 'Jhonny', last_name: 'Yin', nickname: 'Mr Big Shot', email: "jhonny@gmail.com", password: "password", password_confirmation: "password")
+User.create!(first_name: 'David', last_name: 'Yin', nickname: 'Drunken Paddler', email: "david@gmail.com", password: "password", password_confirmation: "password")
+User.create!(first_name: 'Art', last_name: 'Rivkin', nickname: 'Angry Russian', email: "art@gmail.com", password: "password", password_confirmation: "password")
+User.create!(first_name: 'Abdul', last_name: 'Khader', nickname: 'Money', email: "abdul@gmail.com", password: "password", password_confirmation: "password")
 
 # Wun has 50 wins and 5 losses
 wun = User.find_by_first_name('Wun')

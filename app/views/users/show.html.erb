@@ -1,12 +1,25 @@
 <% provide(:title, @user.full_name) %>
-<div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.full_name %>
-      </h1>
-    </section>
-  </aside>
-  <%= link_to "PLAY!", new_match_path(user_id: @user.id) %>
+<div class='box round fill-denim dark center'>
+  <section class='pad4'>    
+    <%= image_tag 'bill.jpg', alt: @user.full_name, class: 'img-circle space-bottom0', width: 85 %>
+    <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+    <p class='quiet'><%= @user.nickname %></p>
+    <%= link_to 'Play', new_match_path(user_id: @user.id), class: 'btn btn-loud btn-wide' %>
+  </section>
+</div>
+<div class='fill-gray pad2 center clearfix quiet'>
+  <div class='col-xs-10 col-xs-offset-1'>
+    <div class='col-xs-4'>
+      <i class='icon icon-fire block icon-md space-bottom1'></i>
+      <span class='block'>2,764</span>points
+    </div>
+    <div class='col-xs-4'>
+      <i class='icon icon-stats block icon-md space-bottom1'></i>              
+      <span class='block'>2</span>rank
+    </div>
+    <div class='col-xs-4'>
+      <i class='icon icon-leaf block icon-md space-bottom1'></i>              
+      <span class='block'><%= @user.win_count %> – <%= @user.loss_count %></span>record
+    </div>
+  </div>
 </div>

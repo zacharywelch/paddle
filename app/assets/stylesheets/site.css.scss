@@ -1,16 +1,22 @@
+/*.logo { font-family: 'Open Sans Bold'; font-size: 22px; }*/
 body.players .box { padding-left: 110px; }
 a.clickable { color: inherit; }
 a.clickable:focus { box-shadow: none; }
+.match-player img { border: 4px solid #2A658E; }
+.match-player.active img { width: 115px; }
+.match-player.active p { font-size: 1.2em; }
 @media (min-width: 992px) and (max-width: 1080px) {
   .primary .tabs { width: 66.66666666666666%; }
 }
 @media (max-width:767px) {
   body.fill-light { background: #fff; }
-  .container-fluid > .pad4y { padding-top: 20px; padding-bottom: 20px; }
+  .container-fluid > .pad4y { padding-top: 0px; padding-bottom: 20px; }
   .box { border-radius: 0; margin-bottom: 0; }
   .box:not(:first-child) { border-top: none; } 
   .box.form { padding: 0; border: none; }
-  body.players > .container-fluid { padding: 0; }
+  body > .container-fluid { padding: 0; }
   body.players .pad4y { padding-top: 5px; }
   body.players .box:first-child { border-top: none; }  
+
+  body.player .pad4y { padding-top: 0; }
 }
