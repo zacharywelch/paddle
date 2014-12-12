@@ -1,0 +1,11 @@
+<%= form_for(@match) do |f| %>
+  <%= f.hidden_field :loser_id, :value => params[:user_id] %>
+  <%= f.hidden_field :winner_id, :value => current_user.id %>
+  <%= f.submit "", :type => :image, :src => "" %>
+<% end %>
+
+<%= form_for(@match) do |f| %>
+  <%= f.hidden_field :winner_id, :value => params[:user_id] %>
+  <%= f.hidden_field :loser_id, :value => current_user.id %>
+  <%= f.submit "", :type => :image, :src => "" %>
+<% end %>

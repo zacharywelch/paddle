@@ -1,0 +1,12 @@
+<% provide(:title, @user.full_name) %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.full_name %>
+      </h1>
+    </section>
+  </aside>
+  <%= link_to "PLAY!", new_match_path(user_id: @user.id) %>
+</div>
