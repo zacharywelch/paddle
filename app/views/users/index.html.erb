@@ -1,20 +1,37 @@
-<% provide(:title, 'Players') %>
-<% provide(:body_class, 'players') %>
+<% provide(:title, 'Leaders') %>
 
-<% @users.each_with_index do |player, rank| %>
-  <%= link_to user_path(player.id), class: 'clickable block box round pad2 clearfix contain fill-white slideDown' do %>
-    <div class='pin-left pad2'>
-      <span class='pad2y pad0r quiet small'><%= rank + 1 %></span>
-      <div class='fill-red img-circle graphic-sm dark inline'>
-        <i class='icon icon-user'></i>
+<div class='box round contain fill-white pad2'>
+  <h4>Leaders</h4>
+  <small class='pad1y quiet'>
+    Bacon ipsum dolor amet short ribs <a href='#fakelink'>ribeye hamburger</a>.
+  </small>
+  <fieldset class='with-icon quiet space-bottom'>
+    <span class='icon icon-search'></span>
+    <input type='text' class='flat stretch' placeholder='Filter'>
+    <small class='pin-right quiet pad1r'>
+      <div class='rounded-toggle inline'>
+        <input id='rank' type='radio' name='sort' value='rank' checked='checked'>
+        <label for='rank' class='animate'>rank</label>
+        <input id='name' type='radio' name='sort' value='name'>
+        <label for='name' class='animate'>name</label>
       </div>
+    </small>
+  </fieldset>
+  <hr />
+
+  <% @users.each_with_index do |player, index| %>
+  <div class='contain fill-gray space-bottom1 row3'>
+    <span class='pin-topleft fill-darken1 dark pad2y pad1x'>
+      <%= index + 1 %>
+    </span>
+    <div class='pad1y pad4x contain player-media'>
+      <%= image_tag cycle_avatar(index), class: 'pull-left img-circle pin-top' %>
+      <%= player_name(player) %>
+      <span class='block small quiet'>
+        2,764 points · <%= player.win_count %> wins · <%= player.loss_count %> losses
+      </span>
     </div>
-    <h4><%= player_name(player) %></h4>
-    <div class='quiet small'>
-      2,764 points · <%= player.win_count %> wins · <%= player.loss_count %> losses
-    </div>
-    <div class='small space-bottom1'>
-      played 2 hours ago
-    </div>
+  </div>
   <% end %>
-<% end %>
+
+</div>

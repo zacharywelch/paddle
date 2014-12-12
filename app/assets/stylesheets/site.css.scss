@@ -19,4 +19,21 @@ a.clickable:focus { box-shadow: none; }
   body.players .box:first-child { border-top: none; }  
 
   body.player .pad4y { padding-top: 0; }
+
+  /* new */
+  body .box:first-child { border: none; }
+}
+
+/* new */
+
+input.flat { 
+  border-width: 0; 
+  background: #f8f8f8;
+}
+
+.player-media { padding-left: 95px; }
+.player-media img { 
+  left: 40px;
+  width: 40px;
+  top: 10px;
 }
