@@ -11,7 +11,8 @@
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
-<body class='fill-light players'>
+<body class='<%= body_class(yield :body_class) %>'>
+<body class='fill-light'>
   <%= render 'layouts/header' %>
   <div class='container-fluid clearfix'>
     <div class='contain clearfix pad4y'>    

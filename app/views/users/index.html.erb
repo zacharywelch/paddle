@@ -1,6 +1,20 @@
-<% provide(:title, 'All users') %>
-<h1>All users</h1>
+<% provide(:title, 'Players') %>
+<% provide(:body_class, 'players') %>
 
-<ul class="users">
-  <%= render @users %>
-</ul>
+<% @users.each_with_index do |player, rank| %>
+  <%= link_to user_path(player.id), class: 'clickable block box round pad2 clearfix contain fill-white slideDown' do %>
+    <div class='pin-left pad2'>
+      <span class='pad2y pad0r quiet small'><%= rank + 1 %></span>
+      <div class='fill-red img-circle graphic-sm dark inline'>
+        <i class='icon icon-user'></i>
+      </div>
+    </div>
+    <h4><%= player_name(player) %></h4>
+    <div class='quiet small'>
+      2,764 points · <%= player.win_count %> wins · <%= player.loss_count %> losses
+    </div>
+    <div class='small space-bottom1'>
+      played 2 hours ago
+    </div>
+  <% end %>
+<% end %>

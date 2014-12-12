@@ -1,27 +1,26 @@
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
-
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-
+<div class='contain pad2 prose'>
+  <%= form_for(@user, class: 'space-bottom') do |f| %>
+    <fieldset>
       <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
-
+      <%= f.text_field :first_name, class: 'stretch' %>
+    </fieldset>
+    <fieldset>
       <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
-
+      <%= f.text_field :last_name, class: 'stretch' %>
+    </fieldset>
+    <fieldset>
       <%= f.label :email %>
-      <%= f.text_field :email %>
-
+      <%= f.text_field :email, class: 'stretch' %>
+    </fieldset>
+    <fieldset>
       <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
+      <%= f.password_field :password, class: 'stretch' %>
+    </fieldset>
+    <%= f.submit 'Sign up', class: 'btn btn-block btn-primary' %>
+  <% end %>
+  <hr />
+  <p class='quiet center'>
+    Already a Paddle member? <%= link_to 'Log in', signin_path %>
+  </p>
 </div>

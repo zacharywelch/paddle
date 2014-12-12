@@ -7,4 +7,16 @@ module UsersHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, alt: user.full_name, class: "gravatar")
   end
+
+  def player_name(player)
+    [player.first_name, nickname(player), player.last_name].compact.join(' ').html_safe
+  end
+
+  private
+
+  def nickname(player)
+    unless player.nickname.blank? 
+      content_tag :span, player.nickname_in_quotes, class: 'quiet'
+    end
+  end  
 end
