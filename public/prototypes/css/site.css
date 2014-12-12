@@ -2,6 +2,9 @@
 body.requests .box { padding-left: 110px; }
 a.clickable { color: inherit; }
 a.clickable:focus { box-shadow: none; }
+.match-player img { border: 4px solid #2A658E; }
+.match-player.active img { width: 115px; }
+.match-player.active p { font-size: 1.2em; }
 @media (min-width: 992px) and (max-width: 1080px) {
   .primary .tabs { width: 66.66666666666666%; }
 }
