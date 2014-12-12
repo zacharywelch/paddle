@@ -75,12 +75,6 @@ class User < ActiveRecord::Base
     User.order(points: :desc).index(self)+1
   end
 
-  private
-
-  def create_remember_token
-    self.remember_token = User.digest(User.new_remember_token)
-  end
-
   def calculate_statistics(pts, competitor_pts, winner_id)
     s = winner_id == id ? 1.0 : 0.0
     d = pts - competitor_pts
@@ -95,6 +89,12 @@ class User < ActiveRecord::Base
     power_of = 10.0**(-d/f)
     denominator = power_of + 1.0
     dE = k*(s-(1/denominator))
-    update_attributes(points: dE)
+    update_attributes(points: points+dE)
+  end
+
+  private
+
+  def create_remember_token
+    self.remember_token = User.digest(User.new_remember_token)
   end
 end
