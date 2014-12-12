@@ -17,7 +17,7 @@
 class User < ActiveRecord::Base
   has_many :wins, class_name: 'Match', foreign_key: 'winner_id'
   has_many :losses, class_name: 'Match', foreign_key: 'loser_id'
-  scope :ranked, -> { order(win_percentage: :desc) }
+  scope :ranked, -> { order(points: :desc) }
   scope :leaders, -> { ranked.limit(10) }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
@@ -27,10 +27,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, length: { minimum: 6 }
   
   before_save { self.email = email.downcase }  
-  before_save :calculate_statistics, :if => :win_loss_changed?
   before_create :create_remember_token
 
   def User.new_remember_token
@@ -73,13 +71,30 @@ class User < ActiveRecord::Base
     "\"" + nickname + "\"" unless nickname.blank?
   end
 
+  def rank
+    User.order(points: :desc).index(self)+1
+  end
+
   private
 
   def create_remember_token
     self.remember_token = User.digest(User.new_remember_token)
   end
 
-  def calculate_statistics
-    self.win_percentage = win_count.to_f / (win_count + loss_count)
-  end  
+  def calculate_statistics(pts, competitor_pts, winner_id)
+    s = winner_id == id ? 1.0 : 0.0
+    d = pts - competitor_pts
+    f = 400.0
+    if pts < 2100 or competitor_pts < 2100
+      k = 32.0    
+    elsif pts < 2401 or competitor_pts < 2401
+      k = 24.0 
+    else
+      k = 16.0
+    end
+    power_of = 10.0**(-d/f)
+    denominator = power_of + 1.0
+    dE = k*(s-(1/denominator))
+    update_attributes(points: dE)
+  end
 end

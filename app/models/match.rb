@@ -20,5 +20,11 @@ class Match < ActiveRecord::Base
   def post_wins_losses
     winner.increment_wins
     loser.increment_losses
+    adjust_points
+  end
+
+  def adjust_points
+    winner.calculate_statistics(winner.points, loser.points, winner.id)
+    loser.calculate_statistics(loser.points, winner.points, winner.id)
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212034829) do
+ActiveRecord::Schema.define(version: 20141212053615) do
 
   create_table "matches", force: true do |t|
     t.integer  "winner_id"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20141212034829) do
     t.string   "nickname"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.integer  "rank"
     t.integer  "points"
   end
 
