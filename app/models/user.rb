@@ -2,16 +2,18 @@
 #
 # Table name: users
 #
-#  id             :integer          not null, primary key
-#  email          :string(255)
-#  created_at     :datetime
-#  updated_at     :datetime
-#  win_count      :integer          default(0)
-#  loss_count     :integer          default(0)
-#  win_percentage :float
-#  first_name     :string(255)
-#  last_name      :string(255)
-#  nickname       :string(255)
+#  id              :integer          not null, primary key
+#  email           :string(255)
+#  created_at      :datetime
+#  updated_at      :datetime
+#  win_count       :integer          default(0)
+#  loss_count      :integer          default(0)
+#  first_name      :string(255)
+#  last_name       :string(255)
+#  nickname        :string(255)
+#  password_digest :string(255)
+#  remember_token  :string(255)
+#  points          :integer          default(1000)
 #
 
 class User < ActiveRecord::Base
@@ -47,24 +49,12 @@ class User < ActiveRecord::Base
     @matches ||= Match.played_by(id)
   end
 
-  def increment_wins
-    update_attributes(win_count: win_count + 1)
+  def won(loser)
+    update_attributes win_count: win_count + 1, points: points + win_points(loser)
   end
 
-  def increment_losses
-    update_attributes(loss_count: loss_count + 1)
-  end
-
-  def win_loss_changed?
-    win_count_changed? || loss_count_changed?
-  end
-
-  def win!(other_user)
-    wins.create!(loser: other_user)
-  end
-
-  def lose!(other_user)
-    losses.create!(winner: other_user)
+  def lost(winner)
+    update_attributes loss_count: loss_count + 1, points: points + loss_points(winner)
   end
 
   def nickname_in_quotes
@@ -72,29 +62,34 @@ class User < ActiveRecord::Base
   end
 
   def rank
-    User.order(points: :desc).index(self)+1
-  end
-
-  def calculate_statistics(pts, competitor_pts, winner_id)
-    s = winner_id == id ? 1.0 : 0.0
-    d = pts - competitor_pts
-    f = 400.0
-    if pts < 2100 or competitor_pts < 2100
-      k = 32.0    
-    elsif pts < 2401 or competitor_pts < 2401
-      k = 24.0 
-    else
-      k = 16.0
-    end
-    power_of = 10.0**(-d/f)
-    denominator = power_of + 1.0
-    dE = k*(s-(1/denominator))
-    update_attributes(points: points+dE)
+    User.ranked.index(self) + 1
   end
 
   private
 
   def create_remember_token
     self.remember_token = User.digest(User.new_remember_token)
+  end
+
+  def win_points(loser)
+    calculate_points(loser, 1.0)
+  end
+
+  def loss_points(winner)
+    calculate_points(winner, 0.0)
+  end
+
+  def calculate_points(other_player, win_factor)
+    if self.points < 2100 or other_player.points < 2100
+      k_factor = 32.0    
+    elsif self.points < 2401 or other_player.points < 2401
+      k_factor = 24.0
+    else
+      k_factor = 16.0
+    end
+    point_difference = self.points - other_player.points
+    power_of = 10.0**(-point_difference / 400.0)
+    denominator = power_of + 1.0
+    k_factor * (win_factor - (1 / denominator))
   end
 end

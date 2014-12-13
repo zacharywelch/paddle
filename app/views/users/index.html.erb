@@ -28,10 +28,10 @@
         <%= image_tag cycle_avatar(index), class: 'pull-left img-circle pin-top' %>
         <%= player_name(player) %>
         <span class='block small quiet hidden-xs'>
-          2,764 points · <%= player.win_count %> wins · <%= player.loss_count %> losses
+          <%= number_to_human player.points %> points · <%= player.win_count %> wins · <%= player.loss_count %> losses
         </span>
         <span class='block small quiet visible-xs'>
-          2,764 points · <%= player.win_count %> - <%= player.loss_count %> record
+          <%= number_to_human player.points %> points · <%= player.win_count %> - <%= player.loss_count %> record
         </span>
       </div>
     <% end %>  
