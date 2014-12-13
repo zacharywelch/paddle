@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   scope :leaders, -> { ranked.limit(10) }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  DEFAULT_AVATARS = %w(batman.jpg adventuretime.jpg gumball.jpg fizzys-lunch-lab.png fusionfall.jpg)
   
   validates :first_name, presence: true, length: { maximum: 50 }  
   validates :last_name, presence: true, length: { maximum: 50 }  
@@ -63,6 +64,10 @@ class User < ActiveRecord::Base
 
   def rank
     @rank ||= User.ranked.index(self) + 1
+  end
+
+  def avatar_url
+    DEFAULT_AVATARS[id - 1 % DEFAULT_AVATARS.length]
   end
 
   private

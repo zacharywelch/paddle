@@ -8,11 +8,6 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.full_name, class: "gravatar")
   end
 
-  def default_avatar(index)
-    avatars = %w(batman.jpg adventuretime.jpg gumball.jpg fizzys-lunch-lab.png fusionfall.jpg)
-    avatars[index % avatars.length]
-  end
-
   def player_name(player)
     [player.first_name, nickname(player), player.last_name].compact.join(' ').html_safe
   end

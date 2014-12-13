@@ -1,7 +1,7 @@
 <% provide(:title, @user.full_name) %>
 <div class='box round fill-white'>
   <header class='pad4y center fill-turquoise dark profile'>
-    <%= image_tag default_avatar(@user.rank - 1), class: 'img-circle space-bottom1', width: 125 %>
+    <%= image_tag @user.avatar_url, class: 'img-circle space-bottom1', width: 125 %>
     <h3><%= @user.first_name %> <%= @user.last_name %></h3>
     <p class='quiet'>
       <%= @user.nickname %>
