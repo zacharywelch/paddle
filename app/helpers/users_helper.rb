@@ -21,7 +21,7 @@ module UsersHelper
 
   def nickname(player)
     unless player.nickname.blank? 
-      content_tag :span, player.nickname_in_quotes, class: 'quiet'
+      content_tag :span, player.nickname_in_quotes, class: 'quiet hidden-xs'
     end
   end  
 end
