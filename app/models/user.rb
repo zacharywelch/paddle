@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   end
 
   def avatar_url
-    DEFAULT_AVATARS[id - 1 % DEFAULT_AVATARS.length]
+    DEFAULT_AVATARS[(id - 1) % DEFAULT_AVATARS.length]
   end
 
   private
