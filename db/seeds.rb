@@ -31,12 +31,12 @@ abdul  = User.create!(first_name: 'Abdul', last_name: 'Khader', nickname: 'Money
 1.times  { Match.create!(winner: abdul, loser: jhonny) }
 
 # David's record 
-# 7-5 vs art
-# 9-6 vs abdul
-7.times  { Match.create!(winner: david, loser: art) }
+# 10-5 vs art
+# 12-1 vs abdul
+10.times { Match.create!(winner: david, loser: art) }
 5.times  { Match.create!(winner: art, loser: david) }
-9.times  { Match.create!(winner: david, loser: abdul) }
-6.times  { Match.create!(winner: abdul, loser: david) }
+12.times { Match.create!(winner: david, loser: abdul) }
+1.times  { Match.create!(winner: abdul, loser: david) }
 
 # Art's record 
 # 10-3 vs abdul

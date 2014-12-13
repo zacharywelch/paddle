@@ -1,7 +1,7 @@
 <% provide(:title, @user.full_name) %>
 <div class='box round fill-white'>
-  <header class='pad4y center fill-turquoise dark'>
-    <%= image_tag 'fizzys-lunch-lab.png', class: 'img-circle space-bottom1', width: 125 %>
+  <header class='pad4y center fill-turquoise dark profile'>
+    <%= image_tag default_avatar(@user.rank - 1), class: 'img-circle space-bottom1', width: 125 %>
     <h3><%= @user.first_name %> <%= @user.last_name %></h3>
     <p class='quiet'>
       <%= @user.nickname %>
@@ -13,16 +13,20 @@
   <div class='pad1y fill-gray keyline-top keyline-bottom clearfix stats small'>
     <div class='col-xs-4 pad0y center keyline-right'>
       <span class='fill-darken1 img-circle dark inline'>
-        <%= number_with_delimiter player.points %>
+        <%= number_with_delimiter @user.points %>
       </span>
       <span class='block'>points</span>
     </div>
     <div class='col-xs-4 pad0y center keyline-right'>
-      <span class='fill-darken1 img-circle dark inline'>2</span>
-      <span class='block'>ranking</span>              
+      <span class='fill-darken1 img-circle dark inline'>
+        <%= @user.rank %>
+      </span>
+      <span class='block'>ranking</span>
     </div>
     <div class='col-xs-4 pad0y center'>
-      <span class='fill-darken1 img-circle dark inline'>50 - 5</span>
+      <span class='fill-darken1 img-circle dark inline'>
+        <%= @user.win_count %> - <%= @user.loss_count %>
+      </span>
       <span class='block'>record</span>
     </div>
   </div>

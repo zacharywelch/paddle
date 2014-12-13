@@ -62,7 +62,7 @@ class User < ActiveRecord::Base
   end
 
   def rank
-    User.ranked.index(self) + 1
+    @rank ||= User.ranked.index(self) + 1
   end
 
   private

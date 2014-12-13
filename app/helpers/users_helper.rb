@@ -8,8 +8,8 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.full_name, class: "gravatar")
   end
 
-  def cycle_avatar(index)
-    avatars = %w(batman.jpg adventuretime.jpg gumball.jpg cyberchase.png fusionfall.jpg)
+  def default_avatar(index)
+    avatars = %w(batman.jpg adventuretime.jpg gumball.jpg fizzys-lunch-lab.png fusionfall.jpg)
     avatars[index % avatars.length]
   end
 
