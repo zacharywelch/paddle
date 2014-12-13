@@ -1,27 +1,102 @@
 <% provide(:title, @user.full_name) %>
-<div class='box round fill-denim dark center'>
-  <section class='pad4'>    
-    <%= image_tag 'bill.jpg', alt: @user.full_name, class: 'img-circle space-bottom0', width: 85 %>
-    <h2><%= @user.first_name %> <%= @user.last_name %></h2>
-    <p class='quiet'><%= @user.nickname %></p>
+<div class='box round fill-white'>
+  <header class='pad4y center fill-turquoise dark'>
+    <%= image_tag 'fizzys-lunch-lab.png', class: 'img-circle space-bottom1', width: 125 %>
+    <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+    <p class='quiet'>
+      <%= @user.nickname %>
+    </p>
     <% unless current_user == @user %>
-      <%= link_to 'Play', new_match_path(user_id: @user.id), class: 'btn btn-loud btn-wide' %>
-    <% end %>
-  </section>
-</div>
-<div class='fill-gray pad2 center clearfix quiet'>
-  <div class='col-xs-10 col-xs-offset-1'>
-    <div class='col-xs-4'>
-      <i class='icon icon-fire block icon-md space-bottom1'></i>
-      <span class='block'>2,764</span>points
+      <%= link_to 'Play', new_match_path(user_id: @user.id), class: 'btn btn-inverse' %>
+    <% end %>    
+  </header>
+  <div class='pad1y fill-gray keyline-top keyline-bottom clearfix stats small'>
+    <div class='col-xs-4 pad0y center keyline-right'>
+      <span class='fill-darken1 img-circle dark inline'>
+        1,273
+      </span>
+      <span class='block'>points</span>
     </div>
-    <div class='col-xs-4'>
-      <i class='icon icon-stats block icon-md space-bottom1'></i>              
-      <span class='block'>2</span>rank
+    <div class='col-xs-4 pad0y center keyline-right'>
+      <span class='fill-darken1 img-circle dark inline'>2</span>
+      <span class='block'>ranking</span>              
     </div>
-    <div class='col-xs-4'>
-      <i class='icon icon-leaf block icon-md space-bottom1'></i>              
-      <span class='block'><%= @user.win_count %> – <%= @user.loss_count %></span>record
+    <div class='col-xs-4 pad0y center'>
+      <span class='fill-darken1 img-circle dark inline'>50 - 5</span>
+      <span class='block'>record</span>
+    </div>
+  </div>
+
+  <div class='pad2'>
+    <small class='pad1y quiet center'>
+      Bacon ipsum dolor amet short ribs <a href='#fakelink'>ribeye hamburger</a>.
+    </small>
+    
+    <hr />
+
+    <div class='contain fill-gray space-bottom1 row3'>
+      <span class='pin-topleft fill-darken1 dark pad2y pad1x'>
+        1
+      </span>
+      <div class='pad1y pad4x contain player-media'>
+        <%= image_tag 'adventuretime.jpg', class: 'pull-left img-circle pin-top' %>
+        Wun 'The Master' Yin
+        <span class='block small quiet'>
+          10 wins - 5 losses
+        </span>
+      </div>
+    </div>
+
+    <div class='contain fill-gray space-bottom1 row3'>
+      <span class='pin-topleft fill-darken1 dark pad2y pad1x'>
+        2
+      </span>
+      <div class='pad1y pad4x contain player-media'>
+        <%= image_tag 'batman.jpg', class: 'pull-left img-circle pin-top' %>
+        Wun 'The Master' Yin
+        <span class='block small quiet'>
+          10 wins - 5 losses
+        </span>
+      </div>
+    </div>
+
+    <div class='contain fill-gray space-bottom1 row3'>
+      <span class='pin-topleft fill-darken1 dark pad2y pad1x'>
+        3
+      </span>
+      <div class='pad1y pad4x contain player-media'>
+        <%= image_tag 'cyberchase.png', class: 'pull-left img-circle pin-top' %>
+        Wun 'The Master' Yin
+        <span class='block small quiet'>
+          10 wins - 5 losses
+        </span>
+      </div>
+    </div>
+
+    <div class='contain fill-gray space-bottom1 row3'>
+      <span class='pin-topleft fill-darken1 dark pad2y pad1x'>
+        4
+      </span>
+      <div class='pad1y pad4x contain player-media'>
+        <%= image_tag 'gumball.jpg', class: 'pull-left img-circle pin-top' %>
+        Wun 'The Master' Yin
+        <span class='block small quiet'>
+          10 wins - 5 losses
+        </span>
+      </div>
+    </div>
+
+    <div class='contain fill-gray space-bottom1 row3'>
+      <span class='pin-topleft fill-darken1 dark pad2y pad1x'>
+        5
+      </span>
+      <div class='pad1y pad4x contain player-media'>
+        <%= image_tag 'fusionfall.jpg', class: 'pull-left img-circle pin-top' %>
+        Wun 'The Master' Yin
+        <span class='block small quiet'>
+          10 wins - 5 losses
+        </span>
+      </div>
     </div>
   </div>
 </div>

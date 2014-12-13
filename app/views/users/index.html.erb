@@ -20,18 +20,18 @@
   <hr />
 
   <% @users.each_with_index do |player, index| %>
-  <div class='contain fill-gray space-bottom1 row3'>
-    <span class='pin-topleft fill-darken1 dark pad2y pad1x'>
-      <%= index + 1 %>
-    </span>
-    <div class='pad1y pad4x contain player-media'>
-      <%= image_tag cycle_avatar(index), class: 'pull-left img-circle pin-top' %>
-      <%= player_name(player) %>
-      <span class='block small quiet'>
-        2,764 points · <%= player.win_count %> wins · <%= player.loss_count %> losses
+    <%= link_to user_path(player), class: 'clickable block contain fill-gray space-bottom1 row3' do %>
+      <span class='pin-topleft fill-darken1 dark pad2y pad1x'>
+        <%= index + 1 %>
       </span>
-    </div>
-  </div>
+      <div class='pad1y pad4x contain player-media'>
+        <%= image_tag cycle_avatar(index), class: 'pull-left img-circle pin-top' %>
+        <%= player_name(player) %>
+        <span class='block small quiet'>
+          2,764 points · <%= player.win_count %> wins · <%= player.loss_count %> losses
+        </span>
+      </div>
+    <% end %>  
   <% end %>
 
 </div>
