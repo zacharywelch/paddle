@@ -10,19 +10,21 @@
         </a>
 
         <a href='#dropdown' class='hidden-xs authmenu droplink quiet pad1 block round animate pull-right'>
-          <img class='avatar round' src='https://www.gravatar.com/avatar/2f56248796231593ce00c562fae2b1da.jpg?d=mm'>
-          zwelch
+          <%= image_tag current_user.avatar_url, class: 'avatar round' %>
+          <%= current_user.first_name.downcase %>
         </a>
 
         <div class='dropdown fill-white keyline-all round animate'>
           <div class='profile contain keyline-bottom pad1'>
-            <a href='#fakelink' class='profile-icon'>
-              <img class='avatar' src='https://www.gravatar.com/avatar/2f56248796231593ce00c562fae2b1da.jpg?d=mm'>
-            </a>
-            <a href='#fakelink' class='truncate'>
-              Lorem<br>
-              <span class='quiet'>(ipsum dolor)</span>
-            </a>
+            <%= link_to user_path(current_user), class: 'profile-icon' do %>
+              <%= image_tag current_user.avatar_url, class: 'avatar' %>
+            <% end %>
+            <%= link_to user_path(current_user), class: 'truncate' do %>
+              <%= current_user.first_name %> <%= current_user.last_name %><br>
+              <%= content_tag :span, class: 'quiet' do %>
+                (<%= current_user.nickname %>)
+              <% end unless current_user.nickname.blank? %>
+            <% end %>
           </div>
           <% if signed_in? %>
             <div class='keyline-bottom pad1'>
