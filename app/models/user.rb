@@ -47,7 +47,7 @@ class User < ActiveRecord::Base
   end
 
   def matches
-    @matches ||= Match.played_by(id)
+    @matches ||= Match.played_by(id).includes(:winner, :loser)
   end
 
   def won(loser)

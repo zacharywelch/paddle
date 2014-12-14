@@ -1,0 +1,12 @@
+<div class='contain fill-gray space-bottom1 row3'>
+  <div class='pad1y pad4x pad1r contain player-media'>
+    <%= link_to user_path(opponent) do %>
+      <%= image_tag opponent.avatar_url, class: 'pull-left img-circle pin-top' %>
+    <% end %>
+    <%= link_to player_name(opponent), user_path(opponent), class: 'clickable' %>
+    <span class='block small quiet'>
+      <%= time_ago_in_words match.created_at %> ago
+    </span>
+  </div>
+  <%= win_loss_column match, user %>
+</div>
