@@ -20,3 +20,71 @@ a.clickable:focus { box-shadow: none; }
 
   body.player .pad4y { padding-top: 0; }
 }
+
+/* Global styles
+------------------------------------------------------- */
+
+/* Prevents animation on initial page load. */
+body:not(.animate) .animate {
+  -webkit-transition:none;
+     -moz-transition:none;
+      -ms-transition:none;
+          transition:none;
+}
+
+.debug_dump {
+  background: transparent;
+  margin: 20px 0 40px;
+  text-align: center;
+  border: none;  
+}
+
+#wrap {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+/* Landing Items
+------------------------------------------------------- */
+.hero {
+    width: 90%;
+    margin:0 auto;
+}
+
+.hero-img {
+    width: 50%;
+    margin: 0 auto;
+    z-index: 2;
+    display: block;
+}
+.circle{
+    border-radius: 100px;
+    max-width:200px;
+}
+.challenger{
+   display: inline-block;
+}
+@media all and (max-width: 699px){
+    .hero-img{
+        width:100%;
+    }
+}
+.btn-hero {
+    font-family: sans-serif;
+    font-size: 2.25em;
+    line-height: .1em;
+    font-weight: 200;
+}
+.fill-darker { background: #202020; }
+.fill-orange { background: #eca139; }
+.fill-purple { background: #4b3055; }
+.fill-mauve {background: #954d65 ;}
+.fill-pink {background: #db6974;}
+.fill-beige {background: #f7f4e8;}
+.fill-gradient {
+  background-color: #eca139;
+  background-image: 
+    linear-gradient(
+      #7e3f98,#eca139
+    );
+}
