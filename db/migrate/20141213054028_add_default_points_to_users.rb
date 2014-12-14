@@ -1,6 +1,6 @@
 class AddDefaultPointsToUsers < ActiveRecord::Migration
   def up
-    change_column_default :users, :points, 1000
+    change_column_default :users, :points, 1450
   end
 
   def down

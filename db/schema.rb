@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20141213054028) do
     t.string   "nickname"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.integer  "points",          default: 1000
+    t.integer  "points",          default: 1450
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
