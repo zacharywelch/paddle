@@ -42,9 +42,9 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
-  def full_name
-    [first_name, nickname_in_quotes, last_name].compact.join(' ')
-  end  
+  def name
+    [first_name, last_name].compact.join(' ')
+  end
 
   def matches
     @matches ||= Match.played_by(id)

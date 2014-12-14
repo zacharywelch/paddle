@@ -1,32 +1,29 @@
-<%= form_for(@match) do |f| %>
-<h2 class='pad2 fill-gray center quiet'>Who won?</h2>
-
-<div class='box round fill-blue dark center'>
-  <% @user = User.find(params[:user_id]) %> 
-  <section class='pad4'>
-    <div class='match-player active space-bottom'>
-      <%= image_tag 'bill.jpg', alt: current_user.full_name, class: 'img-circle space-bottom0', width: 85 %>
-      <p class='quiet'>
-        <%= current_user.first_name %> <%= current_user.last_name %>
-      </p>
-      <%= f.radio_button(:winner_id, current_user.id) %>
+<div class='box round contain fill-white pad2 center space-bottom clearfix'>
+  <h2 class='space-bottom'>Who won?</h2>
+  <%= form_for(@match) do |f| %>
+    <div class='clearfix space-bottom4'>
+      <div class='col-xs-6 pad4y match-player'>
+        <label>
+          <%= f.radio_button :winner_id, current_user.id, class: 'hidden' %>
+          <%= image_tag current_user.avatar_url, class: 'img-circle space-bottom1', width: 85 %>
+        </label>
+        <h4><%= current_user.name %></h4>
+        <small class='quiet block space-bottom1'><%= current_user.nickname %></small>
+      </div>
+      <div class='col-xs-6 pad4y opponent match-player'>
+        <div class='versus'>vs</div>
+        <label>
+          <%= f.radio_button :winner_id, @opponent.id, class: 'hidden' %>
+          <%= image_tag @opponent.avatar_url, class: 'img-circle space-bottom1', width: 85 %>
+        </label>
+        <a href='#fakelink'>
+        </a>
+        <h4><%= @opponent.name %></h4>
+        <small class='quiet block space-bottom1'><%= @opponent.nickname %></small>
+      </div>
     </div>
-
-    <h1 class='fancy space-bottom'>VS</h1>
-
-    <div class='match-player'>
-      <%= image_tag 'bill.jpg', alt: current_user.full_name, class: 'img-circle space-bottom0', width: 85 %>
-      <p class='quiet'>
-        <%= @user.full_name %>
-      </p>
-      <%= f.radio_button(:winner_id, @user.id) %>
-    </div>
-  </section>
-
+    
+    <%= f.hidden_field(:opponent_id, value: @opponent.id) %>
+    <%= f.submit 'Record match', class: 'btn btn-primary btn-block' %>
+  <% end %>
 </div>
-
-<div class='fill-gray pad2y pad4x clearfix'>
-  <%= f.hidden_field(:user_id, value: @user.id) %>
-  <%= f.submit 'Record Match', class: 'btn btn-block btn-primary' %>
-</div>
-<% end %>
