@@ -1,63 +1,44 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(first_name: 'Wun', last_name: 'Yin', nickname: 'The Master', email: "wun@gmail.com", password: "password", password_confirmation: "password")
-User.create!(first_name: 'Jhonny', last_name: 'Yin', nickname: 'Mr Big Shot', email: "jhonny@gmail.com", password: "password", password_confirmation: "password")
-User.create!(first_name: 'David', last_name: 'Yin', nickname: 'Drunken Paddler', email: "david@gmail.com", password: "password", password_confirmation: "password")
-User.create!(first_name: 'Art', last_name: 'Rivkin', nickname: 'Angry Russian', email: "art@gmail.com", password: "password", password_confirmation: "password")
-User.create!(first_name: 'Abdul', last_name: 'Khader', nickname: 'Money', email: "abdul@gmail.com", password: "password", password_confirmation: "password")
+wun    = User.create!(first_name: 'Wun', last_name: 'Yin', nickname: 'The Master', email: "wun@gmail.com", password: "password", password_confirmation: "password")
+jhonny = User.create!(first_name: 'Jhonny', last_name: 'Yin', nickname: 'Mr Big Shot', email: "jhonny@gmail.com", password: "password", password_confirmation: "password")
+david  = User.create!(first_name: 'David', last_name: 'Yin', nickname: 'Drunken Paddler', email: "david@gmail.com", password: "password", password_confirmation: "password")
+art    = User.create!(first_name: 'Art', last_name: 'Rivkin', nickname: 'Angry Russian', email: "art@gmail.com", password: "password", password_confirmation: "password")
+abdul  = User.create!(first_name: 'Abdul', last_name: 'Khader', nickname: 'Money', email: "abdul@gmail.com", password: "password", password_confirmation: "password")
 
-# Wun has 50 wins and 5 losses
-wun = User.find_by_first_name('Wun')
-opponents = User.where.not(first_name: 'Wun')
-50.times do 
-  Match.create(winner: wun, loser: opponents.sample)
-end
-5.times do 
-  Match.create(winner: opponents.sample, loser: wun)
-end
+# Wun's record
+# 10-2 vs jhonny
+# 9-1 vs david
+# 13-0 vs art
+# 15-0 vs abdul
+10.times { Match.create!(winner: wun, loser: jhonny) }
+2.times  { Match.create!(winner: jhonny, loser: wun) }
+9.times  { Match.create!(winner: wun, loser: david) }
+1.times  { Match.create!(winner: david, loser: wun) }
+13.times { Match.create!(winner: wun, loser: art) }
+15.times { Match.create!(winner: wun, loser: abdul) }
 
-# Jhonny has 37 wins and 18 losses
-jhonny = User.find_by_first_name('Jhonny')
-opponents = User.where.not(first_name: 'Jhonny')
-37.times do 
-  Match.create(winner: jhonny, loser: opponents.sample)
-end
-18.times do 
-  Match.create(winner: opponents.sample, loser: jhonny)
-end
+# Jhonny's record 
+# 3-3 vs david
+# 9-3 wins vs art
+# 10-1 wins vs abdul
+3.times  { Match.create!(winner: jhonny, loser: david) }
+3.times  { Match.create!(winner: david, loser: jhonny) }
+9.times  { Match.create!(winner: jhonny, loser: art) }
+3.times  { Match.create!(winner: art, loser: jhonny) }
+10.times { Match.create!(winner: jhonny, loser: abdul) }
+1.times  { Match.create!(winner: abdul, loser: jhonny) }
 
-# David has 32 wins and 23 losses
-david = User.find_by_first_name('David')
-opponents = User.where.not(first_name: 'David')
-32.times do 
-  Match.create(winner: david, loser: opponents.sample)
-end
-23.times do 
-  Match.create(winner: opponents.sample, loser: david)
-end
+# David's record 
+# 10-5 vs art
+# 12-1 vs abdul
+10.times { Match.create!(winner: david, loser: art) }
+5.times  { Match.create!(winner: art, loser: david) }
+12.times { Match.create!(winner: david, loser: abdul) }
+1.times  { Match.create!(winner: abdul, loser: david) }
 
-# Art has 28 wins and 27 losses
-art = User.find_by_first_name('Art')
-opponents = User.where.not(first_name: 'Art')
-28.times do 
-  Match.create(winner: art, loser: opponents.sample)
-end
-27.times do 
-  Match.create(winner: opponents.sample, loser: art)
-end
-
-# abdul has 20 wins and 35 losses
-abdul = User.find_by_first_name('Abdul')
-opponents = User.where.not(first_name: 'Abdul')
-20.times do 
-  Match.create(winner: abdul, loser: opponents.sample)
-end
-35.times do 
-  Match.create(winner: opponents.sample, loser: abdul)
-end
+# Art's record 
+# 10-3 vs abdul
+10.times { Match.create!(winner: art, loser: abdul) }
+3.times { Match.create!(winner: abdul, loser: art) }

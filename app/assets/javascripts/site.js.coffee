@@ -17,5 +17,9 @@ $ ->
     
     return false    
 
+  $('.match-player :radio').change (e) ->
+    $('.match-player :radio').siblings('img').removeClass('pulse')
+    $(this).siblings('img').addClass('pulse')
+
   # Add animate class to body element
   document.body.className += ' animate'

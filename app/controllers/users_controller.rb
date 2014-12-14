@@ -18,10 +18,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params.merge(password_confirmation: user_params[:password]))
-    @user.points = 1450
+    # @user.points = 1450 # todo: make 1450 default in database
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
       render 'new'
@@ -44,20 +43,6 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_url
-  end
-
-  def following
-    @title = "Following"
-    @user = User.find(params[:id])
-    @users = @user.followed_users.paginate(page: params[:page])
-    render 'show_follow'
-  end
-
-  def followers
-    @title = "Followers"
-    @user = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
-    render 'show_follow'
   end
 
   private

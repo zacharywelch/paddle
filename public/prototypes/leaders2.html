@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'/>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>  
+  <title>Leaders</title>
+  <link href='framework/css/cb-design-framework.min.css' rel='stylesheet' />
+  <link href='css/site.css' rel='stylesheet' />
+</head>
+<body class='fill-light'>
+  <div class='navbar fill-white keyline-bottom col-sm-12 animate clearfix'>
+    <div class='container-fluid contain'>
+      <nav class='col-sm-12 text-right pad1y contain clearfix noprint'>
+        <a class='logo pad1y pull-left text-left' href='/en'>Paddle</a>
+
+        <div class='primary small strong row2'>
+          <a href='#dropdown' class='visible-xs authmenu keyline-all droplink 
+            quiet round animate pull-right center'>
+            <i class='icon icon-list'></i>
+          </a>
+
+          <a href='#dropdown' class='hidden-xs authmenu droplink quiet pad1 block round animate pull-right'>
+            <img class='avatar round' src='https://www.gravatar.com/avatar/2f56248796231593ce00c562fae2b1da.jpg?d=mm'>
+            zwelch
+          </a>
+
+          <div class='dropdown fill-white keyline-all round animate'>
+            <div class='profile contain keyline-bottom pad1'>
+              <a href='#fakelink' class='profile-icon'>
+                <img class='avatar' src='https://www.gravatar.com/avatar/2f56248796231593ce00c562fae2b1da.jpg?d=mm'>
+              </a>
+              <a href='#fakelink' class='truncate'>
+                Lorem<br>
+                <span class='quiet'>(ipsum dolor)</span>
+              </a>
+            </div>
+            <div class='keyline-bottom pad1'>
+              <a href='#fakelink'>Account</a>
+              <a href='#fakelink' id='signout'>Sign out</a>
+            </div>            
+          </div><!-- ./dropdown -->   
+        </div><!-- ./primary -->       
+
+      </nav>
+
+    </div>
+  </div><!-- ./navbar -->
+
+  <div class='container-fluid clearfix'>
+    <div class='contain clearfix pad4y'>
+      
+      <div class='col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 clearfix'>
+        
+        <div class='box round contain fill-white'>
+          <header class='box-heading pad2'>
+            <h4>Simple 2 column layout</h4>
+            <p class='prose'>
+              Move columns to the right using <code>.col-md-offset-*</code> classes. These classes increase the left margin of a column by <code>*</code> columns. Note the use of <code>.col-md-offset-1</code> on the main content div to give spacing from the sidebar.
+            </p>                
+          </header>
+          <div class='pad2'>
+            <div class='col-md-12 clearfix'>
+              <div class='col-md-4 pad2 fill-gray'>Sidebar content</div>
+              <div class='col-md-7 col-md-offset-1 pad2 fill-blue dark'>Main content</div>
+            </div>
+          </div>
+          <div class='contain'>
+            <a href="#fakelink" class='small strong pad0y pad1x pin-topright fill-white keyline-left keyline-bottom keyline-top hidden-xs hidden-sm js-clipboard' data-ref-id='2-column'>
+              <i class='icon icon-clipboard pad0r'></i>Copy
+            </a>
+<pre class='prettyprint' id='2-column'>
+&lt;div class='col-md-12 clearfix'&gt;
+  &lt;div class='col-md-4 pad2 fill-gray'&gt;Sidebar content&lt;/div&gt;
+  &lt;div class='col-md-7 col-md-offset-1 pad2 fill-blue dark'&gt;Main content&lt;/div&gt;
+&lt;/div&gt;
+</pre>          
+          </div>
+        </div>      
+
+<!--         <a href='#fakelink' class='clickable block box round pad2 clearfix contain fill-white slideDown'>
+          <div class='pin-left pad2'>
+            <span class='pad2y pad0r quiet small'>1</span>
+            <div class='fill-red img-circle graphic-sm dark inline'>
+              <i class='icon icon-user'></i>
+            </div>
+          </div>
+          <h4>Wun <span class='quiet'>"The Master"</span> Yin</h4>
+          <div class='quiet small'>
+            2,764 points · 50 wins · 5 losses
+          </div>
+          <div class='small space-bottom1'>
+            played 2 hours ago
+          </div>
+        </a>
+
+        <a href='#fakelink' class='clickable block box round pad2 clearfix contain fill-white'>
+          <div class='pin-left pad2'>
+            <span class='pad2y pad0r quiet small'>2</span>
+            <div class='fill-red img-circle graphic-sm dark inline'>
+              <i class='icon icon-user'></i>
+            </div>
+          </div>
+          <h4>Jhonny <span class='quiet'>"Mr Big Shot"</span> Yin</h4>
+          <div class='quiet small'>
+            2,764 points · 50 wins · 5 losses
+          </div>
+          <div class='small space-bottom1'>
+            played 2 hours ago
+          </div>
+        </a>
+
+        <a href='#fakelink' class='clickable block box round pad2 clearfix contain fill-white'>
+          <div class='pin-left pad2'>
+            <span class='pad2y pad0r quiet small'>3</span>
+            <div class='fill-green img-circle graphic-sm dark inline'>
+              <i class='icon icon-user'></i>
+            </div>
+          </div>
+          <h4>David <span class='quiet'>"Drunken Paddler"</span> Yin</h4>
+          <div class='quiet small'>
+            2,764 points · 50 wins · 5 losses
+          </div>
+          <div class='small space-bottom1'>
+            played 2 hours ago
+          </div>
+        </a>
+
+        <a href='#fakelink' class='clickable block box round pad2 clearfix contain fill-white'>
+          <div class='pin-left pad2'>
+            <span class='pad2y pad0r quiet small'>4</span>
+            <div class='fill-green img-circle graphic-sm dark inline'>
+              <i class='icon icon-user'></i>
+            </div>
+          </div>
+          <h4>Art <span class='quiet'>"Angry Russian"</span> Rivkin</h4>
+          <div class='quiet small'>
+            2,764 points · 50 wins · 5 losses
+          </div>
+          <div class='small space-bottom1'>
+            played 2 hours ago
+          </div>
+        </a>
+
+        <a href='#fakelink' class='clickable block box round pad2 clearfix contain fill-white'>
+          <div class='pin-left pad2'>
+            <span class='pad2y pad0r quiet small'>5</span>
+            <div class='fill-green img-circle graphic-sm dark inline'>
+              <i class='icon icon-user'></i>
+            </div>
+          </div>
+          <h4>Abdul <span class='quiet'>"Money"</span> Khader</h4>
+          <div class='quiet small'>
+            2,764 points · 50 wins · 5 losses
+          </div>
+          <div class='small space-bottom1'>
+            played 2 hours ago
+          </div>
+        </a> -->
+
+      </div><!-- ./requests -->  
+    </div>
+  </div><!-- ./content -->
+  <div class='center quiet small space-bottom'>© Careerbuilder</div>  
+  
+  <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' ></script>
+  <script src='framework/js/cb-design-framework.min.js'></script>
+  <script src='js/site.js'></script>
+</body>
+</html>
