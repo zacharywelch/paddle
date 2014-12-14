@@ -2,7 +2,7 @@
   <h2 class='space-bottom'>Who won?</h2>
   <%= form_for(@match) do |f| %>
     <div class='clearfix space-bottom4'>
-      <div class='col-xs-6 pad4y match-player'>
+      <div class='col-xs-6 pad4y match-player slideRight'>
         <label>
           <%= f.radio_button :winner_id, current_user.id, class: 'hidden' %>
           <%= image_tag current_user.avatar_url, class: 'img-circle space-bottom1', width: 85 %>
@@ -10,7 +10,7 @@
         <h4><%= current_user.name %></h4>
         <small class='quiet block space-bottom1'><%= current_user.nickname %></small>
       </div>
-      <div class='col-xs-6 pad4y opponent match-player'>
+      <div class='col-xs-6 pad4y opponent match-player slideLeft'>
         <div class='versus'>vs</div>
         <label>
           <%= f.radio_button :winner_id, @opponent.id, class: 'hidden' %>
@@ -27,3 +27,6 @@
     <%= f.submit 'Record match', class: 'btn btn-primary btn-block' %>
   <% end %>
 </div>
+<script>
+  
+</script>
