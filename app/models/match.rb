@@ -15,6 +15,7 @@ class Match < ActiveRecord::Base
   scope :played_by, ->(player_id) { where("winner_id = ? OR loser_id = ?", player_id, player_id) }
   scope :recent, -> { order(created_at: :desc) }
   after_create :post_wins_losses
+  validates :winner_id, :loser_id, presence: true
 
   def won?(player)
     player == winner

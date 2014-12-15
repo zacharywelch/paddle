@@ -1,6 +1,7 @@
 <div class='box round contain fill-white pad2 center space-bottom clearfix'>
   <h2 class='space-bottom'>Who won?</h2>
   <%= form_for(@match) do |f| %>
+    <%= render 'shared/error_messages', object: @match %>
     <div class='clearfix space-bottom4'>
       <div class='col-xs-6 pad4y match-player slideRight'>
         <label>
