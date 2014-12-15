@@ -30,6 +30,9 @@
               <% end %>
             </div>
             <div class='keyline-bottom pad1'>
+              <%= link_to 'Leaders', users_path %>
+            </div>
+            <div class='keyline-bottom pad1'>
               <%= link_to 'Account', edit_user_path(current_user) %>
               <%= link_to 'Sign Out', signout_path, method: "delete" %>
             </div>
