@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
   before_action :signed_in_user,
-                only: [:index, :edit, :update, :destroy, :following, :followers]
+                only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
   def index
     @users = User.ranked
+  end
+
+  def search
+    @users = User.search(params[:q])
   end
 
   def show

@@ -1,5 +1,7 @@
 Paddle::Application.routes.draw do
-  resources :users
+  resources :users do 
+    get 'search', on: :collection
+  end
   resources :sessions,      only: [:new, :create, :destroy]
   resources :matches,       only: [:new, :create]
   root to: 'users#index'

@@ -70,6 +70,11 @@ class User < ActiveRecord::Base
     DEFAULT_AVATARS[(id - 1) % DEFAULT_AVATARS.length]
   end
 
+  def self.search(query)
+    query = "%#{query}%" unless query.nil?
+    User.where("first_name LIKE ? OR last_name LIKE ?", query, query)
+  end
+
   private
 
   def create_remember_token

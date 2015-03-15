@@ -8,6 +8,9 @@ gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'byebug'
+gem 'jbuilder', '~> 1.2'
+gem 'handlebars_assets', '0.19'
+
 group :development do
   gem 'annotate', '2.5.0'
 end
